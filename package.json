@@ -4,13 +4,14 @@
   "description": "Shopping Cart Exam App",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^2.0.0",
     "hapi": "^13.3.0",
+    "hapi-resource-z": "0.0.2",
     "joi": "^8.0.5",
     "pg": "^4.5.3",
     "pg-hstore": "^2.3.2",

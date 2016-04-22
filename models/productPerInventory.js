@@ -1,7 +1,7 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
   var ProductPerInventory = sequelize.define('ProductPerInventory', {
-    stock: DataTypes.INT
+    stock: DataTypes.INTEGER
   }, {
     classMethods: {
       associate: function(models) {
