@@ -20,7 +20,7 @@ describe('functional tests - inventory', () => {
     });
   })
 
-  it('should create product inventory', (done) => {
+  it('should create inventory', (done) => {
 
       server.inject({
           method: 'POST',
@@ -41,7 +41,7 @@ describe('functional tests - inventory', () => {
       });
   });
 
-  it('should get products inventory', (done) => {
+  it('should get inventory', (done) => {
 
       server.inject({
           method: 'GET',
@@ -54,7 +54,7 @@ describe('functional tests - inventory', () => {
       });
   });
 
-  it('should get single product inventory', (done) => {
+  it('should get single inventory', (done) => {
 
       server.inject({
           method: 'GET',
@@ -67,7 +67,7 @@ describe('functional tests - inventory', () => {
       });
   });
 
-  it('should update product inventory', (done) => {
+  it('should update inventory', (done) => {
 
       server.inject({
           method: 'PUT',
@@ -87,7 +87,7 @@ describe('functional tests - inventory', () => {
       });
   });
 
-  it('should delete product category', (done) => {
+  it('should delete inventory', (done) => {
 
       server.inject({
           method: 'DELETE',

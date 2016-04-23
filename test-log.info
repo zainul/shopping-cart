@@ -1,0 +1,24 @@
+functional tests - inventory
+  [32m✔[0m [90m1) should create inventory (44 ms)[0m
+  [32m✔[0m [90m2) should get inventory (13 ms)[0m
+  [32m✔[0m [90m3) should get single inventory (7 ms)[0m
+  [32m✔[0m [90m4) should update inventory (22 ms)[0m
+  [32m✔[0m [90m5) should delete inventory (13 ms)[0m
+functional tests - product
+  [32m✔[0m [90m6) should create product (24 ms)[0m
+  [32m✔[0m [90m7) should get list product (11 ms)[0m
+  [32m✔[0m [90m8) should get single product (5 ms)[0m
+  [32m✔[0m [90m9) should update product (25 ms)[0m
+  [32m✔[0m [90m10) should delete product (21 ms)[0m
+functional tests - product category
+  [32m✔[0m [90m11) should create product category (12 ms)[0m
+  [32m✔[0m [90m12) should get products category (5 ms)[0m
+  [32m✔[0m [90m13) should get single product category (4 ms)[0m
+  [32m✔[0m [90m14) should update product category (25 ms)[0m
+  [32m✔[0m [90m15) should delete product category (9 ms)[0m
+
+
+[32m15 tests complete[0m
+Test duration: 520 ms
+[32mNo global variable leaks detected[0m
+

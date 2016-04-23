@@ -15,7 +15,7 @@ product.all = (options, callback) => {
 
   models.Product.findAll({
     include: [
-      withRelationship
+      relationship
     ]
   })
   .then((product) => {

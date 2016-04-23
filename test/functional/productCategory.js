@@ -46,7 +46,7 @@ describe('functional tests - product category', () => {
         }, (response) => {
           var result = JSON.parse(response.payload);
           expect(response.statusCode).to.equal(200);
-          expect(result.length).to.equal(1);
+          expect(result.length).to.be.at.least(1);
           done();
         });
     });
