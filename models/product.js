@@ -7,6 +7,13 @@ module.exports = function(sequelize, DataTypes) {
       associate: function(models) {
         // associations can be defined here
         Product.belongsTo(models.ProductCategory)
+        Product.hasMany(models.DiscountCoupon, {
+          foreignKey: 'type_id',
+          constraints: false,
+          scope: {
+            typeable: 'product'
+          }
+        });
       }
     }
   });
