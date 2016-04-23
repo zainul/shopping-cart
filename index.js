@@ -10,6 +10,7 @@ const hapiSwagger     = require('hapi-swagger');
 const Pack            = require('./package');
 
 const productCategoryController = require('./controller/productCategory')
+const productController = require('./controller/product')
 const inventoryController = require('./controller/inventory')
 
 const preResponse = function (request, reply) {
@@ -49,6 +50,17 @@ server.route(resource({
       name: joi.string().required(),
       address: joi.string(),
       location: joi.string()
+    }
+  }
+}));
+
+server.route(resource({
+  name: "product",
+  controller: productController,
+  validate: {
+    payload: {
+      name: joi.string().required(),
+      ProductCategoryId: joi.number().required(),
     }
   }
 }));
