@@ -75,11 +75,9 @@ server.route(resource({
   controller: receiveProductController,
   validate: {
     payload: {
-      name: joi.string().required(),
       ProductPerInventoryId: joi.number().required(),
-      InventoryId: joi.number().required(),
       total: joi.number().required(),
-      date: joi.number().required(),
+      date: joi.date().required(),
       costOfGoodSold: joi.number().required()
     }
   }

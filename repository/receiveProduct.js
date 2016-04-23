@@ -2,17 +2,38 @@
 const receiveProduct = {};
 const models              = require('../models/index');
 const query               = require('../helper/query');
+const async               = require('async');
 
-receiveProduct.create = (options, callback) => {
-  models.ReceiveProduct.create(options).then((receiveProduct) => {
-    callback(receiveProduct);
+receiveProduct.create = (options, callbackCreate) => {
+  let saveReceiveProduct = (callback) => {
+    models.ReceiveProduct.create(options).then((receiveProduct) => {
+      callback(null, receiveProduct.get());
+    })
+  }
+
+  let addToProductInventoryDetil = (result, callback) => {
+    var options = {};
+    options.stock = result.total;
+    options.price = result.costOfGoodSold || 0;
+    options.ReceiveProductId = result.id;
+
+    models.ProductPerInventoryDetil.create(options).then((res) => {
+      callback(null, result);
+    });
+  }
+
+  async.waterfall([
+    saveReceiveProduct,
+    addToProductInventoryDetil
+  ], (err, result) => {
+    callbackCreate(result)
   })
 }
 
 receiveProduct.all = (options, callback) => {
   var relationship = query.filter(options, models.ReceiveProduct);
   relationship.all = true,
-  relationship.nested = true;
+  // relationship.nested = true;
 
   models.ReceiveProduct.findAll(
     {
