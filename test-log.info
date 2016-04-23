@@ -1,51 +1,53 @@
 functional tests - inventory
-  [32m✔[0m [90m1) should create inventory (54 ms)[0m
-  [32m✔[0m [90m2) should get inventory (13 ms)[0m
-  [32m✔[0m [90m3) should get single inventory (7 ms)[0m
-  [32m✔[0m [90m4) should update inventory (19 ms)[0m
-  [32m✔[0m [90m5) should delete inventory (12 ms)[0m
+  [32m✔[0m [90m1) should create inventory (40 ms)[0m
+  [32m✔[0m [90m2) should get inventory (12 ms)[0m
+  [32m✔[0m [90m3) should get single inventory (6 ms)[0m
+  [32m✔[0m [90m4) should update inventory (24 ms)[0m
+  [32m✔[0m [90m5) should delete inventory (11 ms)[0m
 functional tests - product
-  [32m✔[0m [90m6) should create product (29 ms)[0m
-  [32m✔[0m [90m7) should get list product (12 ms)[0m
+  [32m✔[0m [90m6) should create product (18 ms)[0m
+  [32m✔[0m [90m7) should get list product (13 ms)[0m
   [32m✔[0m [90m8) should get single product (5 ms)[0m
-  [32m✔[0m [90m9) should update product (18 ms)[0m
-  [32m✔[0m [90m10) should delete product (26 ms)[0m
+  [32m✔[0m [90m9) should update product (23 ms)[0m
+  [32m✔[0m [90m10) should delete product (21 ms)[0m
 functional tests - product category
-  [32m✔[0m [90m11) should create product category (13 ms)[0m
-  [32m✔[0m [90m12) should get products category (8 ms)[0m
+  [32m✔[0m [90m11) should create product category (28 ms)[0m
+  [32m✔[0m [90m12) should get products category (7 ms)[0m
   [32m✔[0m [90m13) should get single product category (5 ms)[0m
-  [32m✔[0m [90m14) should update product category (21 ms)[0m
-  [32m✔[0m [90m15) should delete product category (7 ms)[0m
+  [32m✔[0m [90m14) should update product category (28 ms)[0m
+  [32m✔[0m [90m15) should delete product category (19 ms)[0m
 functional tests - product per inventory
-  [31m✖16) should create product[0m
-  [31m✖17) should get list product per inventory[0m
-  [32m✔[0m [90m18) should get single product per inventory (8 ms)[0m
-  [31m✖19) should update product per inventory[0m
-  [32m✔[0m [90m20) should delete product per inventory (5 ms)[0m
+  [32m✔[0m [90m16) should create product (23 ms)[0m
+  [32m✔[0m [90m17) should get list product per inventory (11 ms)[0m
+  [32m✔[0m [90m18) should get single product per inventory (5 ms)[0m
+  [32m✔[0m [90m19) should update product per inventory (12 ms)[0m
+  [32m✔[0m [90m20) should delete product per inventory (16 ms)[0m
+functional tests - product per inventory detil
+  [31m✖21) should get list product per inventory detils[0m
+functional tests - receive product
+  [32m✔[0m [90m22) should create receive product (38 ms)[0m
+  [32m✔[0m [90m23) should get list receive product (10 ms)[0m
+  [32m✔[0m [90m24) should get single receive product (9 ms)[0m
+  [32m✔[0m [90m25) should delete receive product (9 ms)[0m
 
+
+Test script errors:
+
+[31minitReceiveProduct is not defined[0m
+[90m      at /home/zainul/labs/shopping-cart/test/functional/productPerInventoryDetil.js:96:7
+      at processImmediate [as _immediateCallback] (timers.js:384:17)[0m
+
+[31mThere were 1 test script error(s).[0m
 
 Failed tests:
 
-  16) functional tests - product per inventory should create product:
+  21) functional tests - product per inventory detil should get list product per inventory detils:
 
-      [31mExpected undefined to equal specified value[0m
-
-[90m      at /home/zainul/labs/shopping-cart/test/functional/productPerInventory.js:87:39[0m
-
-  17) functional tests - product per inventory should get list product per inventory:
-
-      [31mExpected 0 to be at least 1[0m
-
-[90m      at /home/zainul/labs/shopping-cart/test/functional/productPerInventory.js:101:38[0m
-
-  19) functional tests - product per inventory should update product per inventory:
-
-      [31mExpected undefined to equal specified value[0m
-
-[90m      at /home/zainul/labs/shopping-cart/test/functional/productPerInventory.js:130:35[0m
+      [31m[0m
 
 
-[31m3 of 20 tests failed[0m
-Test duration: 679 ms
+
+[31m1 of 25 tests failed[0m
+Test duration: 886 ms
 [32mNo global variable leaks detected[0m
 

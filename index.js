@@ -9,14 +9,15 @@ const vision          = require('vision');
 const hapiSwagger     = require('hapi-swagger');
 const Pack            = require('./package');
 
-const productCategoryController = require('./controller/productCategory')
-const productController = require('./controller/product')
-const inventoryController = require('./controller/inventory')
-const receiveProductController = require('./controller/receiveProduct')
-const couponController = require('./controller/coupon')
-const discountCouponController = require('./controller/discountCoupon')
-const productPerInventoryController = require('./controller/productPerInventory')
-const discountPurchaseController = require('./controller/discountTotalPurchase')
+const productCategoryController = require('./controller/productCategory');
+const productController = require('./controller/product');
+const inventoryController = require('./controller/inventory');
+const receiveProductController = require('./controller/receiveProduct');
+const couponController = require('./controller/coupon');
+const discountCouponController = require('./controller/discountCoupon');
+const productPerInventoryController = require('./controller/productPerInventory');
+const discountPurchaseController = require('./controller/discountTotalPurchase');
+const productPerInventoryDetilController = require('./controller//productPerInventoryDetil');
 
 const preResponse = function (request, reply) {
 
@@ -137,6 +138,17 @@ server.route(resource({
     }
   }
 }));
+
+server.route({
+    method: 'GET',
+    path: '/product_per_inventory_detils',
+    config: {
+      handler: productPerInventoryDetilController.index,
+      description: 'Get product per inventory detil',
+      notes: 'Get product per inventory detil',
+      tags: ['api'],
+    }
+});
 
 server.route({
     method: 'GET',
