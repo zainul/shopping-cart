@@ -16,6 +16,7 @@ const receiveProductController = require('./controller/receiveProduct')
 const couponController = require('./controller/coupon')
 const discountCouponController = require('./controller/discountCoupon')
 const productPerInventoryController = require('./controller/productPerInventory')
+const discountPurchaseController = require('./controller/discountTotalPurchase')
 
 const preResponse = function (request, reply) {
 
@@ -124,6 +125,23 @@ server.route(resource({
   }
 }));
 
+server.route(resource({
+  name: "discount_purchase",
+  controller: discountPurchaseController,
+  validate: {
+    payload: {
+      name: joi.string().required(),
+      start: joi.date().required(),
+      end: joi.date().required(),
+      typeable: joi.number().required(),
+      type_id: joi.number().required(),
+      discount_value: joi.number().required(),
+      type_discount: joi.number().required(),
+      min_purchase: joi.number().required()
+    }
+  }
+}));
+
 server.route({
     method: 'GET',
     path: '/',
@@ -142,7 +160,8 @@ server.register([ inert, vision,
         'register': hapiSwagger,
         'options': options
     }], (err) => {
-      console.log(err)
+      if (err)
+        console.log(err)
     });
 
 

@@ -14,6 +14,14 @@ module.exports = function(sequelize, DataTypes) {
             typeable: 'product_category'
           }
         });
+
+        ProductCategory.hasMany(models.DiscountTotalPurchase, {
+          foreignKey: 'type_id',
+          constraints: false,
+          scope: {
+            typeable: 'product_category'
+          }
+        });
       }
     }
   });

@@ -10,7 +10,7 @@ discountCoupon.create = (options, callback) => {
 }
 
 discountCoupon.all = (options, callback) => {
-  var relationship = query.filter(options, models.ReceiveProduct);
+  var relationship = query.filter(options, models.DiscountCoupon);
   relationship.all = true,
   relationship.nested = true;
 
