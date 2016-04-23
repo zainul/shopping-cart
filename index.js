@@ -13,6 +13,8 @@ const productCategoryController = require('./controller/productCategory')
 const productController = require('./controller/product')
 const inventoryController = require('./controller/inventory')
 const receiveProductController = require('./controller/receiveProduct')
+const couponController = require('./controller/coupon')
+const discountCouponController = require('./controller/discountCoupon')
 
 const preResponse = function (request, reply) {
 
@@ -77,6 +79,33 @@ server.route(resource({
       total: joi.number().required(),
       date: joi.number().required(),
       costOfGoodSold: joi.number().required()
+    }
+  }
+}));
+
+server.route(resource({
+  name: "coupon",
+  controller: couponController,
+  validate: {
+    payload: {
+      code: joi.string().required(),
+      usedAt: joi.date().required(),
+      usedBy: joi.number().required(),
+      DiscountCouponId: joi.number().required(),
+    }
+  }
+}));
+
+server.route(resource({
+  name: "discount_coupon",
+  controller: discountCouponController,
+  validate: {
+    payload: {
+      name: joi.string().required(),
+      start: joi.date().required(),
+      end: joi.date().required(),
+      typeable: joi.number().required(),
+      type_id: joi.number().required()
     }
   }
 }));
