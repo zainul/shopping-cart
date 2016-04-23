@@ -3,7 +3,8 @@ const productCategoryRepository = require('../repository/productCategory');
 
 const productCategory = {
   index: (req, res) => {
-    productCategoryRepository.all((productCategory) => {
+    console.log(req.model)
+    productCategoryRepository.all(req.query, (productCategory) => {
       res(productCategory);
     })
   },

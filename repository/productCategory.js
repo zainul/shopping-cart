@@ -1,6 +1,7 @@
 'use strict'
-const productCategory = {};
-const models = require('../models/index');
+const productCategory     = {};
+const models              = require('../models/index');
+const query               = require('../helper/query');
 
 productCategory.create = (options, callback) => {
   models.ProductCategory.create(options).then((productCategory) => {
@@ -8,16 +9,23 @@ productCategory.create = (options, callback) => {
   })
 }
 
-productCategory.all = (callback) => {
-  models.ProductCategory.findAll({}).then((productCategory) => {
+productCategory.all = (options, callback) => {
+  models.ProductCategory.findAll(query.filter(options, models.ProductCategory ))
+  .then((productCategory) => {
     callback(productCategory);
   })
+  .catch(function (error) {
+    callback(error.message)
+  });
 }
 
 productCategory.show = (id, callback) => {
   models.ProductCategory.findOne({ where: id }).then((productCategory)=> {
     callback(productCategory);
   })
+  .catch(function (error) {
+    callback(error.message)
+  });
 }
 
 productCategory.update = (id, options, callback) =>  {
@@ -28,6 +36,9 @@ productCategory.update = (id, options, callback) =>  {
       callback(productCategory);
     })
   })
+  .catch(function (error) {
+    callback(error.message)
+  });
 }
 
 productCategory.delete = (id, callback) => {
@@ -36,6 +47,9 @@ productCategory.delete = (id, callback) => {
   }).then((productCategory) => {
     callback(productCategory);
   })
+  .catch(function (error) {
+    callback(error.message)
+  });
 }
 
 module.exports = productCategory;
