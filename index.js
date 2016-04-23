@@ -9,7 +9,9 @@ const vision          = require('vision');
 const hapiSwagger     = require('hapi-swagger');
 const Pack            = require('./package');
 
-const productCategoryController          = require('./controller/productCategory')
+const productCategoryController = require('./controller/productCategory')
+const inventoryController = require('./controller/inventory')
+
 const preResponse = function (request, reply) {
 
     const response = request.response;
@@ -19,13 +21,13 @@ const preResponse = function (request, reply) {
 
     return reply.continue();
 };
+
 const options = {
     info: {
             'title': 'Shopping Cart API Documentation',
             'version': Pack.version,
         }
     };
-
 
 server.connection({ port: 3000 });
 
@@ -34,7 +36,19 @@ server.route(resource({
   controller: productCategoryController,
   validate: {
     payload: {
-      name: joi.string().alphanum().required(),
+      name: joi.string().required(),
+    }
+  }
+}));
+
+server.route(resource({
+  name: "inventory",
+  controller: inventoryController,
+  validate: {
+    payload: {
+      name: joi.string().required(),
+      address: joi.string(),
+      location: joi.string()
     }
   }
 }));
@@ -52,14 +66,12 @@ server.route({
     }
 });
 
-server.register([
-    inert,
-    vision,
+server.register([ inert, vision,
     {
         'register': hapiSwagger,
         'options': options
     }], (err) => {
-
+      console.log(err)
     });
 
 
