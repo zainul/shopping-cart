@@ -5,6 +5,16 @@ const resource        = require('hapi-resource-z')
 const server          = new Hapi.Server();
 
 const productCategoryController          = require('./controller/productCategory')
+const preResponse = function (request, reply) {
+
+    const response = request.response;
+    if (response.isBoom) {
+        return reply(response.output);
+    }
+
+    return reply.continue();
+};
+
 
 server.connection({ port: 3000 });
 
@@ -28,3 +38,4 @@ server.start((err) => {
     }
     console.log('Server running at:', server.info.uri);
 });
+server.ext('onPreResponse', preResponse);

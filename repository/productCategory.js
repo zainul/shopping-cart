@@ -15,7 +15,7 @@ productCategory.all = (options, callback) => {
     callback(productCategory);
   })
   .catch(function (error) {
-    callback(error.message)
+    callback({ error })
   });
 }
 
@@ -24,7 +24,7 @@ productCategory.show = (id, callback) => {
     callback(productCategory);
   })
   .catch(function (error) {
-    callback(error.message)
+    callback({ error })
   });
 }
 
@@ -37,7 +37,7 @@ productCategory.update = (id, options, callback) =>  {
     })
   })
   .catch(function (error) {
-    callback(error.message)
+    callback({ error })
   });
 }
 
@@ -48,7 +48,7 @@ productCategory.delete = (id, callback) => {
     callback(productCategory);
   })
   .catch(function (error) {
-    callback(error.message)
+    callback({ error })
   });
 }
 

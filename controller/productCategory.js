@@ -1,33 +1,47 @@
-
+const boom = require('boom');
 const productCategoryRepository = require('../repository/productCategory');
 
 const productCategory = {
   index: (req, res) => {
-    console.log(req.model)
     productCategoryRepository.all(req.query, (productCategory) => {
-      res(productCategory);
+      if (productCategory.error)
+        res(boom.badRequest(productCategory.error.message));
+      else
+        res(productCategory);
     })
   },
   create: (req, res) => {
     productCategoryRepository.create(req.payload, (productCategory) => {
-      res(productCategory);
+      if (productCategory.error)
+        res(boom.badRequest(productCategory.error.message));
+      else
+        res(productCategory);
     })
   },
   update: (req, res) => {
     productCategoryRepository.update(req.params.id,
       req.payload,
       (productCategory) => {
-        res(productCategory);
+        if (productCategory.error)
+          res(boom.badRequest(productCategory.error.message));
+        else
+          res(productCategory);
       })
   },
   show: (req, res) => {
     productCategoryRepository.show(req.params, (productCategory) => {
-      res(productCategory);
+      if (productCategory.error)
+        res(boom.badRequest(productCategory.error.message));
+      else
+        res(productCategory);
     })
   },
   destroy: (req, res) => {
     productCategoryRepository.delete(req.params.id, (productCategory) => {
-      res(productCategory);
+      if (productCategory.error)
+        res(boom.badRequest(productCategory.error.message));
+      else
+        res(productCategory);
     })
   }
 }
