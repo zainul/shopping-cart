@@ -8,8 +8,8 @@ const it          = lab.it;
 const after       = lab.after;
 const before      = lab.before;
 
-const models              = require('../models/index');
-const server              = require('../');
+const models              = require('../../models/index');
+const server              = require('../../');
 
 describe('functional tests - product category', () => {
     let id = 0;
@@ -88,7 +88,6 @@ describe('functional tests - product category', () => {
             url: '/product_categories/' + id
         }, (response) => {
             var result = JSON.parse(response.payload);
-            console.log(result)
             expect(response.statusCode).to.equal(200);
             done();
         });
