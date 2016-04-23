@@ -1,16 +1,15 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
-  var Receiveproduct = sequelize.define('ReceiveProduct', {
-    date: DataTypes.DATETIME,
-    ProductPerInventoryId: DataTypes.INTEGER,
-    InventoryId: DataTypes.INTEGER,
+  var ReceiveProduct = sequelize.define('ReceiveProduct', {
+    date: DataTypes.DATE,
     total: DataTypes.INTEGER,
     costOfGoodSold: DataTypes.INTEGER
   }, {
     classMethods: {
       associate: function(models) {
         // associations can be defined here
-        Receiveproduct.belongsTo(models.ProductPerInventory);
+        ReceiveProduct.belongsTo(models.ProductPerInventory);
+        ReceiveProduct.belongsTo(models.Inventory);
       }
     }
   });

@@ -12,6 +12,7 @@ const Pack            = require('./package');
 const productCategoryController = require('./controller/productCategory')
 const productController = require('./controller/product')
 const inventoryController = require('./controller/inventory')
+const receiveProductController = require('./controller/receiveProduct')
 
 const preResponse = function (request, reply) {
 
@@ -61,6 +62,21 @@ server.route(resource({
     payload: {
       name: joi.string().required(),
       ProductCategoryId: joi.number().required(),
+    }
+  }
+}));
+
+server.route(resource({
+  name: "receive_product",
+  controller: receiveProductController,
+  validate: {
+    payload: {
+      name: joi.string().required(),
+      ProductPerInventoryId: joi.number().required(),
+      InventoryId: joi.number().required(),
+      total: joi.number().required(),
+      date: joi.number().required(),
+      costOfGoodSold: joi.number().required()
     }
   }
 }));
