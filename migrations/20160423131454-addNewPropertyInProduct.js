@@ -11,7 +11,7 @@ module.exports = {
     */
     queryInterface.addColumn(
       'ProductPerInventories',
-      'ProductPerInventoryId',
+      'ReceiveProductId',
       Sequelize.INTEGER
     )
   },

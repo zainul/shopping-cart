@@ -15,6 +15,7 @@ const inventoryController = require('./controller/inventory')
 const receiveProductController = require('./controller/receiveProduct')
 const couponController = require('./controller/coupon')
 const discountCouponController = require('./controller/discountCoupon')
+const productPerInventoryController = require('./controller/productPerInventory')
 
 const preResponse = function (request, reply) {
 
@@ -106,6 +107,19 @@ server.route(resource({
       end: joi.date().required(),
       typeable: joi.number().required(),
       type_id: joi.number().required()
+    }
+  }
+}));
+
+server.route(resource({
+  name: "product_per_inventory",
+  controller: productPerInventoryController,
+  validate: {
+    payload: {
+      stock: joi.number().required(),
+      ProductId: joi.number().required(),
+      InventoryId: joi.number().required(),
+      ReceiveProductId: joi.number().required()
     }
   }
 }));
