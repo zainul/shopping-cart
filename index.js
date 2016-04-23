@@ -174,3 +174,6 @@ server.start((err) => {
 });
 
 server.ext('onPreResponse', preResponse);
+
+
+module.exports = server;
