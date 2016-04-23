@@ -12,7 +12,6 @@ productPerInventory.create = (options, callback) => {
 productPerInventory.all = (options, callback) => {
   var relationship = query.filter(options, models.ProductPerInventory);
   relationship.all = true,
-  relationship.nested = true;
 
   models.ProductPerInventory.findAll(
     {

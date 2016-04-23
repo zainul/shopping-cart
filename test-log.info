@@ -1,24 +1,51 @@
 functional tests - inventory
-  [32m✔[0m [90m1) should create inventory (44 ms)[0m
+  [32m✔[0m [90m1) should create inventory (54 ms)[0m
   [32m✔[0m [90m2) should get inventory (13 ms)[0m
   [32m✔[0m [90m3) should get single inventory (7 ms)[0m
-  [32m✔[0m [90m4) should update inventory (22 ms)[0m
-  [32m✔[0m [90m5) should delete inventory (13 ms)[0m
+  [32m✔[0m [90m4) should update inventory (19 ms)[0m
+  [32m✔[0m [90m5) should delete inventory (12 ms)[0m
 functional tests - product
-  [32m✔[0m [90m6) should create product (24 ms)[0m
-  [32m✔[0m [90m7) should get list product (11 ms)[0m
+  [32m✔[0m [90m6) should create product (29 ms)[0m
+  [32m✔[0m [90m7) should get list product (12 ms)[0m
   [32m✔[0m [90m8) should get single product (5 ms)[0m
-  [32m✔[0m [90m9) should update product (25 ms)[0m
-  [32m✔[0m [90m10) should delete product (21 ms)[0m
+  [32m✔[0m [90m9) should update product (18 ms)[0m
+  [32m✔[0m [90m10) should delete product (26 ms)[0m
 functional tests - product category
-  [32m✔[0m [90m11) should create product category (12 ms)[0m
-  [32m✔[0m [90m12) should get products category (5 ms)[0m
-  [32m✔[0m [90m13) should get single product category (4 ms)[0m
-  [32m✔[0m [90m14) should update product category (25 ms)[0m
-  [32m✔[0m [90m15) should delete product category (9 ms)[0m
+  [32m✔[0m [90m11) should create product category (13 ms)[0m
+  [32m✔[0m [90m12) should get products category (8 ms)[0m
+  [32m✔[0m [90m13) should get single product category (5 ms)[0m
+  [32m✔[0m [90m14) should update product category (21 ms)[0m
+  [32m✔[0m [90m15) should delete product category (7 ms)[0m
+functional tests - product per inventory
+  [31m✖16) should create product[0m
+  [31m✖17) should get list product per inventory[0m
+  [32m✔[0m [90m18) should get single product per inventory (8 ms)[0m
+  [31m✖19) should update product per inventory[0m
+  [32m✔[0m [90m20) should delete product per inventory (5 ms)[0m
 
 
-[32m15 tests complete[0m
-Test duration: 520 ms
+Failed tests:
+
+  16) functional tests - product per inventory should create product:
+
+      [31mExpected undefined to equal specified value[0m
+
+[90m      at /home/zainul/labs/shopping-cart/test/functional/productPerInventory.js:87:39[0m
+
+  17) functional tests - product per inventory should get list product per inventory:
+
+      [31mExpected 0 to be at least 1[0m
+
+[90m      at /home/zainul/labs/shopping-cart/test/functional/productPerInventory.js:101:38[0m
+
+  19) functional tests - product per inventory should update product per inventory:
+
+      [31mExpected undefined to equal specified value[0m
+
+[90m      at /home/zainul/labs/shopping-cart/test/functional/productPerInventory.js:130:35[0m
+
+
+[31m3 of 20 tests failed[0m
+Test duration: 679 ms
 [32mNo global variable leaks detected[0m
 
