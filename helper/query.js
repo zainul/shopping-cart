@@ -21,13 +21,13 @@ query.where = (options, model) => {
   var buildWhere = {}
   var properties = [];
 
-  _.forOwn(model.attributes, (value, key) => {
-    properties.push(key);
-  })
+  // _.forOwn(model.attributes, (value, key) => {
+  //   properties.push(key);
+  // })
 
   if (options) {
     _.forOwn(options, (value, key) => {
-      if (key.indexOf(properties) != -1)
+      // if (key.indexOf(properties) != -1)
         buildWhere[key] = value;
     });
   }

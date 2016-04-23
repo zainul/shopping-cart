@@ -1,8 +1,9 @@
 'use strict';
 
 const Hapi            = require('hapi');
-const resource        = require('hapi-resource-z')
+const resource        = require('hapi-resource-z');
 const server          = new Hapi.Server();
+const joi             = require('joi');
 
 const productCategoryController          = require('./controller/productCategory')
 const preResponse = function (request, reply) {
@@ -19,15 +20,22 @@ const preResponse = function (request, reply) {
 server.connection({ port: 3000 });
 
 server.route(resource({
-  name : "product_category",
-  controller : productCategoryController
+  name: "product_category",
+  controller: productCategoryController,
+  validate: {
+    payload: {
+      name: joi.string().alphanum().required(),
+    }
+  }
 }));
 
 server.route({
     method: 'GET',
     path: '/',
-    handler: function (request, reply) {
-        reply('Hello, world!');
+    config: {
+      handler: function (request, reply) {
+          reply('Hello, world!');
+      }
     }
 });
 
