@@ -117,10 +117,8 @@ server.route(resource({
   controller: productPerInventoryController,
   validate: {
     payload: {
-      stock: joi.number().required(),
       ProductId: joi.number().required(),
-      InventoryId: joi.number().required(),
-      ReceiveProductId: joi.number().required()
+      InventoryId: joi.number().required()
     }
   }
 }));

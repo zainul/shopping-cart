@@ -14,9 +14,6 @@ module.exports = {
       ProductPerInventoryId: {
         type: Sequelize.INTEGER
       },
-      InventoryId: {
-        type: Sequelize.INTEGER
-      },
       total: {
         type: Sequelize.INTEGER
       },
