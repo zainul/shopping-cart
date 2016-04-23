@@ -1,20 +1,26 @@
 'use strict';
 module.exports = {
   up: function(queryInterface, Sequelize) {
-    return queryInterface.createTable('ProductPerInventories', {
+    return queryInterface.createTable('ReceiveProducts', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      stock: {
+      date: {
+        type: Sequelize.DATE
+      },
+      ProductPerInventoryId: {
         type: Sequelize.INTEGER
       },
-      ProductId: {
+      InventoryId: {
         type: Sequelize.INTEGER
       },
-      Inventory: {
+      total: {
+        type: Sequelize.INTEGER
+      },
+      costOfGoodSold: {
         type: Sequelize.INTEGER
       },
       createdAt: {
@@ -28,6 +34,6 @@ module.exports = {
     });
   },
   down: function(queryInterface, Sequelize) {
-    return queryInterface.dropTable('ProductPerInventories');
+    return queryInterface.dropTable('ReceiveProducts');
   }
 };

@@ -8,6 +8,7 @@ module.exports = function(sequelize, DataTypes) {
         // associations can be defined here
         ProductPerInventory.belongsTo(models.Inventory);
         ProductPerInventory.belongsTo(models.Product);
+        ProductPerInventory.belongsTo(models.ReceiveProduct);
       }
     }
   });
