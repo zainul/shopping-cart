@@ -10,7 +10,7 @@ discountTotalPurchase.create = (options, callback) => {
 }
 
 discountTotalPurchase.all = (options, callback) => {
-  var relationship = query.filter(options, models.discountTotalPurchase);
+  var relationship = query.filter(options, models.DiscountTotalPurchase);
 
   models.DiscountTotalPurchase.findAll(relationship)
   .then((discountTotalPurchase) => {
