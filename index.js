@@ -105,7 +105,8 @@ server.route(resource({
       name: joi.string().required(),
       start: joi.date().required(),
       end: joi.date().required(),
-      typeable: joi.number().required(),
+      amount: joi.number().required(),
+      typeable: joi.string().required(),
       type_id: joi.number().required()
     }
   }

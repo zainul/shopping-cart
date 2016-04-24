@@ -11,16 +11,8 @@ discountCoupon.create = (options, callback) => {
 
 discountCoupon.all = (options, callback) => {
   var relationship = query.filter(options, models.DiscountCoupon);
-  relationship.all = true,
-  relationship.nested = true;
 
-  models.DiscountCoupon.findAll(
-    {
-      include: [
-        relationship
-      ]
-    }
-  )
+  models.DiscountCoupon.findAll(relationship)
   .then((discountCoupon) => {
     callback(discountCoupon);
   })
