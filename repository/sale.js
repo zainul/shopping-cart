@@ -15,7 +15,13 @@ sale.create = (options, callback) => {
       return item;
     });
     models.SaleItem.bulkCreate(sale_items).then((res) => {
-      callback(sale);
+      models.SaleItem.findAll({
+        where: {
+          SaleId : sale.id
+        }
+      }).then((saleItem) => {
+        callback({ sale, saleItem });
+      })
     })
   })
 }
@@ -23,7 +29,7 @@ sale.create = (options, callback) => {
 sale.all = (options, callback) => {
   models.Sale.findAll(query.filter(options, models.Sale ))
   .then((sale) => {
-    callback(sale);
+    callback(sale)
   })
   .catch(function (error) {
     callback({ error })
@@ -31,7 +37,13 @@ sale.all = (options, callback) => {
 }
 
 sale.show = (id, callback) => {
-  models.Sale.findOne({ where: id }).then((sale)=> {
+  models.Sale.findOne(
+    {
+      where: id,
+      include: [
+        { model: models.SaleItem , require: false }
+      ]
+    }).then((sale)=> {
     callback(sale);
   })
   .catch(function (error) {

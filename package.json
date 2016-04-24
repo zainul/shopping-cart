@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "lab -v -r console"
+    "test": "lab -v -r console -o test-log.info"
   },
   "author": "",
   "license": "ISC",
