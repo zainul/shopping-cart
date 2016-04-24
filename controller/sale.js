@@ -43,6 +43,19 @@ const sale = {
       else
         res(sale);
     })
+  },
+  preCheckout: (req, res) => {
+    req.params.discountType = 'coupon';
+    saleRepository.preCheckout(req.params.id, req.params, (sale) => {
+      if (sale == null)
+        res(sale)
+      else {
+        if (sale.error)
+          res(boom.badRequest(sale.error.message));
+        else
+          res(sale);
+      }
+    })
   }
 }
 

@@ -159,6 +159,23 @@ server.route(resource({
 }));
 
 server.route({
+    method: 'GET',
+    path: '/sales/{id}/pre_checkout/{code}',
+    config: {
+      handler: saleController.preCheckout,
+      description: 'pre checkout coupon',
+      notes: 'pre checkout coupon',
+      validate: {
+        params: {
+          code: joi.string().required(),
+          id: joi.number().required()
+        }
+      },
+      tags: ['api'],
+    }
+});
+
+server.route({
     method: 'PUT',
     path: '/sale_items/{id}',
     config: {

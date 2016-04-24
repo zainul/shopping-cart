@@ -2,6 +2,7 @@
 const sale     = {};
 const models              = require('../models/index');
 const query               = require('../helper/query');
+const async               = require('async');
 
 sale.create = (options, callback) => {
   models.Sale.create({
@@ -49,6 +50,34 @@ sale.update = (id, options, callback) =>  {
   .catch(function (error) {
     callback({ error })
   });
+}
+
+sale.preCheckout = (id, options, callback) => {
+  if (options.discountType == 'coupon') {
+    models.Coupon.findOne({
+      where : {
+        code: options.code
+      },
+      include: [
+        { model: models.DiscountCoupon, require: false,
+          where : {
+            start: {
+              $gte: new Date()
+            },
+            end: {
+              $lte: new Date()
+            }
+          }
+        }
+      ]
+    }).then((coupon) => {
+      callback(coupon);
+    })
+  }else if(options.discountType == 'total_purchase') {
+
+  }else{
+
+  }
 }
 
 sale.delete = (id, callback) => {
