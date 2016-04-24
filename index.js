@@ -18,7 +18,8 @@ const couponController = require('./controller/coupon');
 const discountCouponController = require('./controller/discountCoupon');
 const productPerInventoryController = require('./controller/productPerInventory');
 const discountPurchaseController = require('./controller/discountTotalPurchase');
-const productPerInventoryDetilController = require('./controller//productPerInventoryDetil');
+const productPerInventoryDetilController = require('./controller/productPerInventoryDetil');
+const saleController = require('./controller/sale');
 
 const preResponse = function (request, reply) {
 
@@ -141,12 +142,27 @@ server.route(resource({
   }
 }));
 
+server.route(resource({
+  name: "sale",
+  controller: saleController,
+  validate: {
+    payload: {
+      sale_items: joi.array().items(
+          joi.object().keys({
+          total_item: joi.number().required(),
+          ProductPerInventoryDetilId: joi.number()
+        })
+      )
+    }
+  }
+}));
+
 server.route({
     method: 'GET',
     path: '/product_per_inventory_detils',
     config: {
       handler: productPerInventoryDetilController.index,
-      description: 'Get product per inventory detil',
+      description: 'Get product per inventory detil this route to get list all available product',
       notes: 'Get product per inventory detil',
       tags: ['api'],
     }

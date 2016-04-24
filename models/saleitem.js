@@ -7,7 +7,7 @@ module.exports = function(sequelize, DataTypes) {
       associate: function(models) {
         // associations can be defined here
         SaleItem.belongsTo(models.Sale)
-        SaleItem.belongsTo(models.ProductPerInventory)
+        SaleItem.belongsTo(models.ProductPerInventoryDetil)
         SaleItem.belongsTo(models.DiscountCoupon)
       }
     }
