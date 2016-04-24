@@ -11,16 +11,8 @@ discountTotalPurchase.create = (options, callback) => {
 
 discountTotalPurchase.all = (options, callback) => {
   var relationship = query.filter(options, models.discountTotalPurchase);
-  relationship.all = true,
-  relationship.nested = true;
 
-  models.DiscountTotalPurchase.findAll(
-    {
-      include: [
-        relationship
-      ]
-    }
-  )
+  models.DiscountTotalPurchase.findAll(relationship)
   .then((discountTotalPurchase) => {
     callback(discountTotalPurchase);
   })
