@@ -73,7 +73,6 @@ describe('functional tests - discount total purchase ', () => {
           }
       }, (response) => {
           var result = JSON.parse(response.payload);
-          console.log(result)
           expect(response.statusCode).to.equal(200);
           expect(result).to.be.a.object();
           expect(result.name).to.equal('Hari Belanja Online Nasional')

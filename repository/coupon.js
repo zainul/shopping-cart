@@ -4,22 +4,46 @@ const models              = require('../models/index');
 const query               = require('../helper/query');
 
 coupon.create = (options, callback) => {
-  models.Coupon.create(options).then((coupon) => {
-    callback(coupon);
-  })
+  let listpreCreated = [];
+
+  if (options.totalCreated < 1)
+    options.totalCreated =1;
+
+  for(var i=0, len = options.totalCreated; i< len; i++) {
+    listpreCreated.push({
+      code: Math.random().toString(36).substr(2, 6),
+      usedAt: null,
+      usedBy: null,
+      DiscountCouponId: options.DiscountCouponId
+    })
+  }
+
+  models.Coupon.bulkCreate(listpreCreated).then((res) => {
+    models.Coupon.findAll(
+      {
+        where : {
+          DiscountCouponId: options.DiscountCouponId
+        }
+      }
+    ).then((res)=> {
+      callback(res);
+    })
+  }).catch(function (error) {
+    callback({ error })
+  });
 }
 
 coupon.all = (options, callback) => {
   var relationship = query.filter(options, models.Coupon);
-  relationship.all = true,
+  // relationship.all = true,
   // relationship.nested = true;
 
   models.Coupon.findAll(
-    {
-      include: [
+    // {
+      // include: [
         relationship
-      ]
-    }
+      // ]
+    // }
   )
   .then((coupon) => {
     callback(coupon);

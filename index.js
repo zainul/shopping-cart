@@ -1,3 +1,4 @@
+
 'use strict';
 
 const Hapi            = require('hapi');
@@ -89,9 +90,9 @@ server.route(resource({
   controller: couponController,
   validate: {
     payload: {
-      code: joi.string().required(),
-      usedAt: joi.date().required(),
-      usedBy: joi.number().required(),
+      totalCreated: joi.number().min(1),
+      usedAt: joi.date(),
+      usedBy: joi.number(),
       DiscountCouponId: joi.number().required(),
     }
   }

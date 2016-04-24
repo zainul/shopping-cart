@@ -12,6 +12,7 @@ const coupon = {
   },
   create: (req, res) => {
     couponRepository.create(req.payload, (coupon) => {
+      console.log(coupon.error)
       if (coupon.error)
         res(boom.badRequest(coupon.error.message));
       else
