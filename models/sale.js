@@ -9,6 +9,7 @@ module.exports = function(sequelize, DataTypes) {
         // associations can be defined here
         Sale.belongsTo(models.User)
         Sale.belongsTo(models.DiscountTotalPurchase)
+        Sale.hasMany(models.SaleItem)
       }
     }
   });

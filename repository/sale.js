@@ -53,6 +53,8 @@ sale.update = (id, options, callback) =>  {
 }
 
 sale.preCheckout = (id, options, callback) => {
+  var total_purchase = 0;
+
   async.parallel([
     // couppon
     (callback) => {
@@ -64,10 +66,10 @@ sale.preCheckout = (id, options, callback) => {
           { model: models.DiscountCoupon, require: false,
             where : {
               start: {
-                $gte: new Date()
+                $lte: new Date()
               },
               end: {
-                $lte: new Date()
+                $gte: new Date()
               }
             }
           }
@@ -85,24 +87,22 @@ sale.preCheckout = (id, options, callback) => {
           { model: models.ProductPerInventoryDetil, require: false }
         ]
       }).then((saleItem) => {
-        var total_purchase = 0;
         var salesItem = saleItem.map(function(item){
           var total = (item.total_item * item.ProductPerInventoryDetil.price);
           total_purchase = total_purchase + total;
           return item.total_price = total;
         })
 
-
-        models.DiscountTotalPurchase.findAll({
+        models.DiscountTotalPurchase.findOne({
           where : {
             start: {
-              $gte: new Date()
-            },
-            end: {
               $lte: new Date()
             },
+            end: {
+              $gte: new Date()
+            },
             min_purchase: {
-              gte: total_purchase
+              $lte: total_purchase
             }
           }
         }).then((result) => {
@@ -111,10 +111,26 @@ sale.preCheckout = (id, options, callback) => {
 
       })
     },
+    (callback) => {
+      models.Sale.findAll({
+        where: {
+          id: id
+        },
+        include: [
+          { model: models.SaleItem, require: false,
+            include: [ { model: models.ProductPerInventoryDetil, require: false } ]
+          }
+        ]
+      }).then((sale) => {
+        callback(null, sale)
+      })
+    }
   ],(error, result) => {
     callback({
       coupon: result[0],
-      total_purchase: result[1]
+      discount_total_purchase: result[1],
+      sale: result[2],
+      total_purchase: total_purchase
     });
   })
 }
