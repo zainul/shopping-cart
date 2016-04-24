@@ -53,31 +53,70 @@ sale.update = (id, options, callback) =>  {
 }
 
 sale.preCheckout = (id, options, callback) => {
-  if (options.discountType == 'coupon') {
-    models.Coupon.findOne({
-      where : {
-        code: options.code
-      },
-      include: [
-        { model: models.DiscountCoupon, require: false,
+  async.parallel([
+    // couppon
+    (callback) => {
+      models.Coupon.findOne({
+        where : {
+          code: options.code
+        },
+        include: [
+          { model: models.DiscountCoupon, require: false,
+            where : {
+              start: {
+                $gte: new Date()
+              },
+              end: {
+                $lte: new Date()
+              }
+            }
+          }
+        ]
+      }).then((coupon) => {
+        callback(null, coupon);
+      })
+    },
+    (callback) => {
+      models.SaleItem.findAll({
+        where: {
+          SaleId: id
+        },
+        include: [
+          { model: models.ProductPerInventoryDetil, require: false }
+        ]
+      }).then((saleItem) => {
+        var total_purchase = 0;
+        var salesItem = saleItem.map(function(item){
+          var total = (item.total_item * item.ProductPerInventoryDetil.price);
+          total_purchase = total_purchase + total;
+          return item.total_price = total;
+        })
+
+
+        models.DiscountTotalPurchase.findAll({
           where : {
             start: {
               $gte: new Date()
             },
             end: {
               $lte: new Date()
+            },
+            min_purchase: {
+              gte: total_purchase
             }
           }
-        }
-      ]
-    }).then((coupon) => {
-      callback(coupon);
-    })
-  }else if(options.discountType == 'total_purchase') {
+        }).then((result) => {
+          callback(null, result)
+        })
 
-  }else{
-
-  }
+      })
+    },
+  ],(error, result) => {
+    callback({
+      coupon: result[0],
+      total_purchase: result[1]
+    });
+  })
 }
 
 sale.delete = (id, callback) => {
