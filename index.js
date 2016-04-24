@@ -20,6 +20,7 @@ const productPerInventoryController = require('./controller/productPerInventory'
 const discountPurchaseController = require('./controller/discountTotalPurchase');
 const productPerInventoryDetilController = require('./controller/productPerInventoryDetil');
 const saleController = require('./controller/sale');
+const saleItemController = require('./controller/saleItem');
 
 const preResponse = function (request, reply) {
 
@@ -156,6 +157,33 @@ server.route(resource({
     }
   }
 }));
+
+server.route({
+    method: 'PUT',
+    path: '/sale_items/{id}',
+    config: {
+      handler: saleItemController.update,
+      description: 'update total item in sale items',
+      notes: 'update total item in sale items',
+      validate: {
+        payload: {
+          total_item: joi.number().required()
+        }
+      },
+      tags: ['api'],
+    }
+});
+
+server.route({
+    method: 'DELETE',
+    path: '/sale_items/{id}',
+    config: {
+      handler: saleItemController.destroy,
+      description: 'delete item in sale items',
+      notes: 'delete item in sale items',
+      tags: ['api'],
+    }
+});
 
 server.route({
     method: 'GET',

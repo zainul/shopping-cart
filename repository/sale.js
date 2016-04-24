@@ -9,7 +9,11 @@ sale.create = (options, callback) => {
     is_finished: false,
     UserId: 1,
   }).then((sale) => {
-    models.SaleItem.bulkCreate(options.sale_items).then((res) => {
+    var sale_items = options.sale_items.map(function(item) {
+      item.SaleId = sale.id
+      return item;
+    });
+    models.SaleItem.bulkCreate(sale_items).then((res) => {
       callback(sale);
     })
   })
