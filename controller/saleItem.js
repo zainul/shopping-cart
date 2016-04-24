@@ -12,6 +12,15 @@ const saleItem = {
           res(saleItem);
       })
   },
+  create: (req, res) => {
+    saleItemRepository.create(req.payload,
+      (saleItem) => {
+        if (saleItem.error)
+          res(boom.badRequest(saleItem.error.message));
+        else
+          res(saleItem);
+      })
+  },
   destroy: (req, res) => {
     saleItemRepository.delete(req.params.id, (saleItem) => {
       if (saleItem.error)

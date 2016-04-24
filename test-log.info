@@ -1,56 +1,57 @@
 functional tests - coupon 
-  [32m✔[0m [90m1) should create Coupon (113 ms)[0m
-  [32m✔[0m [90m2) should get list coupon (31 ms)[0m
+  [32m✔[0m [90m1) should create Coupon (102 ms)[0m
+  [32m✔[0m [90m2) should get list coupon (27 ms)[0m
 functional tests - discount coupon 
-  [32m✔[0m [90m3) should create discount coupon with type product (31 ms)[0m
-  [32m✔[0m [90m4) should create discount coupon with type category product (18 ms)[0m
-  [32m✔[0m [90m5) should get list discount coupon (10 ms)[0m
+  [32m✔[0m [90m3) should create discount coupon with type product (30 ms)[0m
+  [32m✔[0m [90m4) should create discount coupon with type category product (17 ms)[0m
+  [32m✔[0m [90m5) should get list discount coupon (5 ms)[0m
 functional tests - discount total purchase 
-  [32m✔[0m [90m6) should create discount total purchase with type product (13 ms)[0m
-  [32m✔[0m [90m7) should create discount coupon with type category product (10 ms)[0m
-  [32m✔[0m [90m8) should get list discount total purchase (4 ms)[0m
+  [32m✔[0m [90m6) should create discount total purchase with type product (14 ms)[0m
+  [32m✔[0m [90m7) should create discount coupon with type category product (51 ms)[0m
+  [32m✔[0m [90m8) should get list discount total purchase (5 ms)[0m
 functional tests - inventory
-  [32m✔[0m [90m9) should create inventory (13 ms)[0m
-  [32m✔[0m [90m10) should get inventory (6 ms)[0m
-  [32m✔[0m [90m11) should get single inventory (10 ms)[0m
-  [32m✔[0m [90m12) should update inventory (27 ms)[0m
-  [32m✔[0m [90m13) should delete inventory (11 ms)[0m
+  [32m✔[0m [90m9) should create inventory (23 ms)[0m
+  [32m✔[0m [90m10) should get inventory (11 ms)[0m
+  [32m✔[0m [90m11) should get single inventory (11 ms)[0m
+  [32m✔[0m [90m12) should update inventory (21 ms)[0m
+  [32m✔[0m [90m13) should delete inventory (10 ms)[0m
 functional tests - product
-  [32m✔[0m [90m14) should create product (24 ms)[0m
-  [32m✔[0m [90m15) should get list product (23 ms)[0m
-  [32m✔[0m [90m16) should get single product (17 ms)[0m
-  [32m✔[0m [90m17) should update product (13 ms)[0m
-  [32m✔[0m [90m18) should delete product (13 ms)[0m
+  [32m✔[0m [90m14) should create product (25 ms)[0m
+  [32m✔[0m [90m15) should get list product (31 ms)[0m
+  [32m✔[0m [90m16) should get single product (5 ms)[0m
+  [32m✔[0m [90m17) should update product (15 ms)[0m
+  [32m✔[0m [90m18) should delete product (10 ms)[0m
 functional tests - product category
-  [32m✔[0m [90m19) should create product category (24 ms)[0m
-  [32m✔[0m [90m20) should get products category (10 ms)[0m
-  [32m✔[0m [90m21) should get single product category (5 ms)[0m
-  [32m✔[0m [90m22) should update product category (17 ms)[0m
+  [32m✔[0m [90m19) should create product category (22 ms)[0m
+  [32m✔[0m [90m20) should get products category (6 ms)[0m
+  [32m✔[0m [90m21) should get single product category (7 ms)[0m
+  [32m✔[0m [90m22) should update product category (20 ms)[0m
   [32m✔[0m [90m23) should delete product category (12 ms)[0m
 functional tests - product per inventory
-  [32m✔[0m [90m24) should create product (23 ms)[0m
-  [32m✔[0m [90m25) should get list product per inventory (11 ms)[0m
-  [32m✔[0m [90m26) should get single product per inventory (9 ms)[0m
-  [32m✔[0m [90m27) should update product per inventory (7 ms)[0m
-  [32m✔[0m [90m28) should delete product per inventory (20 ms)[0m
+  [32m✔[0m [90m24) should create product (11 ms)[0m
+  [32m✔[0m [90m25) should get list product per inventory (9 ms)[0m
+  [32m✔[0m [90m26) should get single product per inventory (4 ms)[0m
+  [32m✔[0m [90m27) should update product per inventory (11 ms)[0m
+  [32m✔[0m [90m28) should delete product per inventory (8 ms)[0m
 functional tests - product per inventory detil
-  [32m✔[0m [90m29) should get list product per inventory detils (11 ms)[0m
+  [32m✔[0m [90m29) should get list product per inventory detils (12 ms)[0m
 functional tests - receive product
-  [32m✔[0m [90m30) should create receive product (23 ms)[0m
-  [32m✔[0m [90m31) should get list receive product (16 ms)[0m
-  [32m✔[0m [90m32) should get single receive product (4 ms)[0m
-  [32m✔[0m [90m33) should delete receive product (12 ms)[0m
+  [32m✔[0m [90m30) should create receive product (26 ms)[0m
+  [32m✔[0m [90m31) should get list receive product (15 ms)[0m
+  [32m✔[0m [90m32) should get single receive product (7 ms)[0m
+  [32m✔[0m [90m33) should delete receive product (19 ms)[0m
 functional tests - discount total purchase 
-  [32m✔[0m [90m34) should get list available product (12 ms)[0m
-  [32m✔[0m [90m35) should create sale with sale item (41 ms)[0m
-  [32m✔[0m [90m36) should create sale with sale item (33 ms)[0m
-  [32m✔[0m [90m37) should update sale item (13 ms)[0m
-  [32m✔[0m [90m38) should delete sale item (14 ms)[0m
-  [32m✔[0m [90m39) should get sales (7 ms)[0m
-  [32m✔[0m [90m40) should get checkout information (36 ms)[0m
+  [32m✔[0m [90m34) should get list available product (14 ms)[0m
+  [32m✔[0m [90m35) should create sale with sale item (34 ms)[0m
+  [32m✔[0m [90m36) should create sale with sale item (29 ms)[0m
+  [32m✔[0m [90m37) should update sale item (21 ms)[0m
+  [32m✔[0m [90m38) should delete sale item (10 ms)[0m
+  [32m✔[0m [90m39) should add new sale item (12 ms)[0m
+  [32m✔[0m [90m40) should get sales (15 ms)[0m
+  [32m✔[0m [90m41) should get checkout information (26 ms)[0m
 
 
-[32m40 tests complete[0m
-Test duration: 1960 ms
+[32m41 tests complete[0m
+Test duration: 1881 ms
 [32mNo global variable leaks detected[0m
 

@@ -241,6 +241,23 @@ describe('functional tests - discount total purchase ', () => {
       });
   });
 
+  it('should add new sale item', (done) => {
+      server.inject({
+          method: 'POST',
+          url: '/sale_items',
+          payload: {
+            SaleId: sale.saleItem[0].id,
+            total_item: 4,
+            ProductPerInventoryDetilId: availableProduct[2].id
+          }
+      }, (response) => {
+          var result = JSON.parse(response.payload);
+          expect(response.statusCode).to.equal(200);
+          expect(result).to.be.an.object();
+          done();
+      });
+  });
+
   it('should get sales', (done) => {
     server.inject({
         method: 'GET',

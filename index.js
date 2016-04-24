@@ -192,6 +192,24 @@ server.route({
 });
 
 server.route({
+    method: 'POST',
+    path: '/sale_items',
+    config: {
+      handler: saleItemController.create,
+      description: 'add new item in sale items',
+      notes: 'add new item in sale items',
+      validate: {
+        payload: {
+          SaleId: joi.number().required(),
+          total_item: joi.number().required(),
+          ProductPerInventoryDetilId: joi.number().required()
+        }
+      },
+      tags: ['api'],
+    }
+});
+
+server.route({
     method: 'DELETE',
     path: '/sale_items/{id}',
     config: {
