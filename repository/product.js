@@ -11,13 +11,14 @@ product.create = (options, callback) => {
 
 product.all = (options, callback) => {
   var relationship = query.filter(options, models.Product);
-  relationship.model = models.ProductCategory;
+  relationship.include = [
+    { model: models.ProductCategory, required: false },
+    { model: models.DiscountCoupon, required: false },
+    { model: models.DiscountTotalPurchase, required: false },
+    { model: models.ProductPerInventory, required: false }
+  ];
 
-  models.Product.findAll({
-    include: [
-      relationship
-    ]
-  })
+  models.Product.findAll(relationship)
   .then((product) => {
     callback(product);
   })

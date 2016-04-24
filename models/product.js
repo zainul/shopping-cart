@@ -22,6 +22,8 @@ module.exports = function(sequelize, DataTypes) {
             typeable: 'product'
           }
         });
+
+        Product.hasMany(models.ProductPerInventory)
       }
     }
   });
